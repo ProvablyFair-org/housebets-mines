@@ -1,0 +1,185 @@
+{
+  "suite": "housebets-mines",
+  "profileSha256": "fb425fc9dd186d21d6dfa347d5c5d420a09b30172fbb10b0b05a21910a2e5439",
+  "verdict": "PROVABLY FAIR — Full Pass",
+  "summary": {
+    "passes": 21,
+    "fails": 0,
+    "overstated": 0,
+    "operatorFlags": 0,
+    "captureFlags": 0,
+    "packageChecks": 5,
+    "excluded": [
+      "MINES-27"
+    ]
+  },
+  "steps": [
+    {
+      "id": "MINES-01",
+      "status": "PASS",
+      "origin": null,
+      "detail": "sha256(utf8(revealed)) == committed (E01 encoding): 170/170 Phase A seeds, 202/202 across A, C, C $10, D, E and the 12 Oct file; pre-capture reveals 6/6; 0 rounds on an unrevealed seed"
+    },
+    {
+      "id": "MINES-02",
+      "status": "PASS",
+      "origin": null,
+      "detail": "A 169/169 links, pre-capture anchor true, last next-hash == the pair active after the capture true; C 2/2 links, pre-capture anchor true, last next-hash == the pair active after the capture true; C $10 2/2 links, pre-capture anchor true, last next-hash == the pair active after the capture true; D 3/3 links, pre-capture anchor true, last next-hash == the pair active after the capture true; E 11/11 links, pre-capture anchor true, last next-hash == the pair active after the capture true — recomputed from the raw hashes, never from the capture's booleans"
+    },
+    {
+      "id": "MINES-03",
+      "status": "PASS",
+      "origin": null,
+      "detail": "170/170 Phase A epochs: every round's bet answer carries the hash read before it, and its settled fairness block the epoch's hash and client seed; C 3/3, C $10 3/3, D 4/4, E 12/12; every server answer of a round (bet, each action, game_detail) carries the same hash, client seed and version as the settled block the recompute uses: 9681/9681 rounds (A, C, C $10, D, E, 12 Oct); the capture's own copies (round id, client seed and hash read before the round, outcome label) == the server's answer: 9681/9681"
+    },
+    {
+      "id": "MINES-04",
+      "status": "PASS",
+      "origin": null,
+      "detail": "A 170/170, C 3/3, C $10 3/3, D 4/4, E 12/12 epochs: nonces exactly 1..50, once each, no gap, repeat or reorder, and N == the server's nonce read at rotation; every round's nonce == the server's count before it + 1: 9600/9600 (12 Oct 81/81); every server answer of a round carries the settled nonce and round id: 9681/9681 rounds"
+    },
+    {
+      "id": "MINES-05",
+      "status": "PASS",
+      "origin": null,
+      "detail": "Phase A 8500 rounds / 170 seeds / 170 epochs (by the hash in the server's bet answer), every epoch exactly 50: true; 8500/8500 on a revealed epoch; 8500/8500 one auto bet naming ONE tile at 0.02; supplementary C 150 in 3 whole epochs of 50: true, C $10 150 in 3 whole epochs of 50: true, D 200 in 4 whole epochs of 50: true, E 600 in 12 whole epochs of 50: true — against src/loader.ts constants, never meta; the 12 Oct file is not part of this population (its rounds are recomputed one by one in MINES-03, 04, 07, 10, 11, 13, 14, 17 and reconciled in MINES-16, never counted here)"
+    },
+    {
+      "id": "MINES-06",
+      "status": "PASS",
+      "origin": null,
+      "detail": "a wrong client seed changes 8494/8500 Phase A fields (6 identical, expected 5.35 — mostly 1-mine boards — bound 21.92); Phase D: player-set seeds [\"provablyfair-1\",\"provablyfair-2\",\"player-seed-abc\",\"1234567890\"] (predictable, disclosed DL-1, all 4 epochs exposed), 200/200 rounds replay clean, 200/200 fields differ under the previous client seed (expected identical 0.09); phases A, C, C $10, E client seeds LABELLED by the capture as 'node:crypto randomBytes(16) hex' 188/188 (a label match; a redacted reference copy of the capture code is in capture/, the as-run game script is held privately, DL-1), each drawn at or after the read of the hash it plays under 188/188; empty-seed control: server refused, HTTP 400 (E06)"
+    },
+    {
+      "id": "MINES-07",
+      "status": "PASS",
+      "origin": null,
+      "detail": "the mine field derived from the revealed seed (E01: HMAC-SHA256 blocks, 4-byte draws, floor(u·n/2^32) among the tiles left) == the served field IN DRAW ORDER: Phase A 8500/8500 (coverage == expectedRounds 8500), C 150/150, C $10 150/150, D 200/200, E 600/600, 12 Oct 81/81; Phase A auto replay (opened, hit, outcome from the derived field) 8500/8500; rounds with every row clean A 8500/8500, C 150/150, C $10 150/150, D 200/200, E 600/600, 12 Oct 81/81 (12 Oct: the 81 records of the 83 that hold a whole round, the 24 h round included; 2 records of one round split by a resumed finish not replayed, counted in MINES-16)"
+    },
+    {
+      "id": "MINES-08",
+      "status": "PASS",
+      "origin": null,
+      "detail": "count of src/rng.ts positionFromU over the 2^32 values of u, taken from the two ends of each outcome's interval (found by binary search and checked through the function; the values between the ends are not enumerated, so the count is exact for a map that is monotone in u) for every range n = 2 … 64 (every draw a board of 25, 36, 49 or 64 tiles makes): counts sum to 2^32 and the interval ends are in order: true; worst |P(j) − 1/n| = 2.2827e-10 (n = 51) ≤ 2^-32 = 2.3283e-10; e.g. n = 25: every position gets 171798691 or 171798692 values (no rejection; u·n/2^32 is exact in binary64)"
+    },
+    {
+      "id": "MINES-09",
+      "status": "PASS",
+      "origin": null,
+      "detail": "the 5 worked boards of HouseBets' published spec (E01 \"examples\") 5/5; its 8 worked multipliers and unit payouts (E01 \"payouts\") 8/8; captured round 0 (grid 49, 22 mines, ×1.7966666666666666) recomputes: true; also tests/rng.test.ts"
+    },
+    {
+      "id": "MINES-10",
+      "status": "PASS",
+      "origin": null,
+      "detail": "win ⇔ no opened tile is a derived mine, a bust ends on exactly one derived mine — from the recomputed field, never the outcome label: 9681/9681 rounds (A, C, C $10, D, E, 12 Oct); a reveal of a derived mine ends the round with payout 0: 405/405; auto bets settle as the derived field says: 9020/9020; Phase A depth: 4252/4252 wins opened exactly the one chosen tile, 4248/4248 busts opened none and hit the chosen tile"
+    },
+    {
+      "id": "MINES-11",
+      "status": "PASS",
+      "origin": null,
+      "detail": "payout == floor(stake × 99·C(N,k) / (100·C(N−m,k))) on the 1e-8 grid, exact BigInt, 0 on a mine (E01 rules, E02 rulesMinesPayout \"rounded down to the smallest unit\"): 9680/9680 rounds (A 8500/8500, 12 Oct 80/80); the settled round record (roundId, stake, payout) agrees: 9680/9680; the round the server finished under the 24 h rule (12 Oct) pays exactly its value at the depth it was left: 1/1; every amount sent and served on the 1e-8 grid (an off-grid value fails, it is never rounded onto the grid): 9681/9681 rounds"
+    },
+    {
+      "id": "MINES-12",
+      "status": "PASS",
+      "origin": null,
+      "detail": "Phase C 150 rounds on grid 25 with 1 mine at 2 (= 100 × the Phase A stake 0.02: true): 150/150 replay clean (field, outcome, multiplier, payout), stake as sent and settled 150/150, 148 elevated wins (≥ 100); $10 set 150 rounds at 10: 150/150 clean, stake 150/150, 147 wins (≥ 100); the derivation takes no stake input"
+    },
+    {
+      "id": "MINES-13",
+      "status": "PASS",
+      "origin": null,
+      "detail": "served multiplier == 99·C(N,k) / (100·C(N−m,k)) as the nearest binary64 (E01 \"multiplier\"; E02 rulesMinesFormula \"0.99 × C(N, k) / C(N−m, k)\"): every winning settle 4907/4907, every open rung of a stepped round 1118/1118 (multiplier and value; A, C, C $10, D, E, 12 Oct); E01's 8 worked fractions 8/8; computed from (N, m, k) alone — no served odds field is read by the derivation"
+    },
+    {
+      "id": "MINES-14",
+      "status": "PASS",
+      "origin": null,
+      "detail": "exact fractions over all 4122 (grid, mines, tiles) cells: strictly increasing in tiles 3952/3952, in mines 3952/3952, every multiplier > 1 4122/4122; max win 1000310.0961298 USDT == E03 wallet maxWin: true; every settled win within it 9681/9681; the next-tile offer follows the max-win rule on every open step 1118/1118; answers offering a max-win stop: 0 of the 11459 request answers of the replayed rounds; no max-odds cap is published (the cap is on the win, E02 rulesMinesMaxWinCap) — the max-win branch (a tile not opened, the round cashed out at its value) is UNWITNESSED: no captured round came near the max win, so the branch is declared, not measured (DL-10); the rule (monotone multipliers within the declared cap) holds, so PASS with the branch declared"
+    },
+    {
+      "id": "MINES-15",
+      "status": "PASS",
+      "origin": null,
+      "detail": "Phase A: 170/170 published (grid, mine count) boards played exactly 50 times (plan in src/loader.ts; floor 50; min 50, max 50); first-pick tiles over A and E span 25/25, 36/36, 49/49, 64/64 of the grids' tiles; Phase E: 4 grids, 81 boards, 6 distinct depths at settle (0, 1, 2, 3, 4, 5)"
+    },
+    {
+      "id": "MINES-16",
+      "status": "PASS",
+      "origin": null,
+      "detail": "every scored round of the 13 Oct phases (A, C, C $10, D, E) is in the platform's bet history with the same stake, payout and won/lost status: 9600/9600 (E04, 9600 rows); the round the server finished under the 24 h rule is in it as won with its payout and stake (E07): true; E05 checked by its numbers: 60 dataset rows sum to the TOTAL row (86966 rounds, staked and paid exact to 1e-8, each row's net == paid − staked), the ledger line adds up (86979 entries = 86966 captured + 0 open + 13 from 10 Oct, captured == TOTAL, unexplained 0), and balance after 914.19723945 − net -72.64994055 + open stakes 0 == 986.84718000 == the --before input: true; each of the package's 6 files' row (rounds, staked, paid) == the package's own count and sums from the file: 6/6 (12 Oct: 82 distinct rounds from 83 records); E05's mines rows: 6, 9682 rounds == the 9682 rounds of this package's files: true; the per-round balance field is not used: the games were captured concurrently, so consecutive mines answers interleave other games' settlements"
+    },
+    {
+      "id": "MINES-17",
+      "status": "PASS",
+      "origin": null,
+      "detail": "Phase E 600/600 tile-by-tile rounds replay clean: rungs 826/826, safe reveals 826/826, mine reveals 361/361, cash-outs 239/239, mine set invariant 600/600, offers on the bet answer 600/600, offers on later answers 826/826; 12 Oct tile-by-tile play: rungs 292/292, safe reveals 292/292, mine reveals 44/44, cash-outs 16/16, mine set invariant 81/81, offers on the bet answer 61/61, offers on later answers 292/292; every rung's multiplier and value == the formula at that depth, and every offer shown before a tile (next.multiplier, next.value; cash-out offered iff a tile is open) == the formula at the next depth: 1779/1779 answers; auto bets naming 2 to 40 tiles as the SERVER settled them (12 Oct): 13/13 replay from the derived field (the scored 13 Oct auto bets name one tile each); order independence 661/661 is COMPUTED by the package (the tile-by-tile walk replayed as if named up front), not a server answer; the field is derived before any tile is chosen (the derivation takes no tile input)"
+    },
+    {
+      "id": "MINES-18",
+      "status": "PASS",
+      "origin": null,
+      "detail": "P(k tiles safe) = C(N−m,k)/C(N,k) equals the product Π(N−m−i)/(N−i) in exact integers for 4122/4122 cells; negative control: round 0 with one served mine moved to a safe tile is rejected by the replay: true; no operator win-chance field exists or is read; Phase A wins 4252 vs 4250.0 expected from the combinatorics (MINES-22 tests it)"
+    },
+    {
+      "id": "MINES-19",
+      "status": "PASS",
+      "origin": null,
+      "detail": "4122 cells (every grid, mine count and cash-out depth): derived RTP 99/100 … 99/100 (the same in every cell: true) — vs the flat claim 0.99 read from the exhibits at run time: E01 \"return\" (GET /housegames/mines2/fairness) \"99% for every board and every number of tiles opened\" (0.99); E02 rulesMinesFormulaWords (game page rules panel) \"That is {pct}% of the fair odds for opening k safe tiles in a row — the house keeps 1%.\" (0.99); E08 rulesMinesRTP (game page rules panel, live copy of 19 Oct) \"Theoretical RTP before rounding and any payout cap\" (0.99); held to the highest, the places agree; E02 rulesMinesRTP is the template \"The return is exactly {pct}% at every cash-out point…\" (10 Oct; reworded 16 Oct, E08), whose {pct} the page fills at run time, not captured rendered — P-2; 0 house-side beyond the 0.1 pp band → RTP-CLAIM PASS (rule RTP-CLAIM 1.2.0, enforced true: PASS); the payout's truncation to 1e-8 at the 0.02 stake costs at most 4.69e-7 of RTP (cell 64/1/2, disclosed); committed table matches: true"
+    },
+    {
+      "id": "MINES-20",
+      "status": "PASS",
+      "origin": null,
+      "detail": "census re-run in full == the pinned outputs/simulation-results.json byte for byte: true; 170 boards (every mine count of the 4 grids) × 1,000,000 rounds = 170,000,000 rounds on auditor-chosen seeds independent of the operator (fixed labels, src/sim-config.ts, so the census reproduces byte for byte), every board on its own seeds: true, drawn to its m picks (floor 1,000,000 per board: true); position uniformity: 340 chi² tests (per grid, each step's position among the tiles left, and its tile over all N, on the rounds of every board of the grid that draws that step), smallest p 4.512e-3 ≥ α/4/340 = 7.353e-6: true; serial on pick 0 of every round of a grid (25: 24,000,000, 36: 35,000,000, 49: 48,000,000, 64: 63,000,000): lag-1 z 25: 1.04, 36: -1.94, 49: -0.59, 64: -0.12, runs z 25: -0.14, 36: 0.56, 49: 0.37, 64: -0.57 (each p ≥ α/4/4: lag true, runs true); RTP convergence: 2722/2722 scored cells (expected survivors ≥ 30) within 5·SE + 0.0001 of the cell's exact derived RTP (0.99 … 0.99; never the published figure), worst |Δ|/SE 3.53 (cell 64/4/14); 1400 deeper cells printed, not scored (1400 in band; outside: none; their exact false-alarm rates summed over all 4122 cells 2.94); band: |RTP_sim − RTP_exact(cell)| ≤ 5·SE + 0.0001, SE = σ/√n per cell, half-width over the scored cells 7.236e-4 (cell 64/1/1) … 8.945e-1 (cell 36/14/15); 1976 of 2722 scored cells have a half-width wider than the cell's house edge 1 − RTP_exact(cell), so in those cells the band cannot detect an edge of that size; false-alarm: uniformity ≤ α/4 = 0.0025 (Bonferroni), lag-1 and runs ≤ α/4 each, RTP cells 0.0018 (exact binomial, summed) ≤ α/4: true"
+    },
+    {
+      "id": "MINES-21",
+      "status": "PASS",
+      "origin": null,
+      "detail": "202 revealed seeds × 10,000 nonces: every revealed seed of every dataset (A 170, C 3, C $10 3, D 4, E 12, 12 Oct 10; 202 of the 202 revealed seeds carry captured rounds); early window = the nonces the capture played on the seed (1..50 on a 13 Oct pair, 1..n with n ≤ 10 on a 12 Oct pair), reference = the rest of 1..10,000; each nonce replays a round the capture played on that seed (its board, its tiles in order, its depth); scored statistic (per-slot standardised return, src/sim-config.ts; switched from the pooled return on 14 Oct, after the pooled result below was known — both printed): each played slot's return minus its exact mean ÷ its exact sd, summed and ÷ √slots, over the 9682 early-window slots: z 0.495, one-sided p 0.6897 (≥ 0.01: true); reference window z -0.462; per dataset, printed, not scored: A z -0.096 (8500 slots), C z 1.667 (150 slots), C $10 z 1.250 (150 slots), D z 1.512 (200 slots), E z -0.067 (600 slots), 12 Oct z 0.233 (82 slots); per-cell census counts sum to the window totals: true; every seed's captured rounds are nonces 1..n with no gap: 202/202; early window == the served outcomes, cell by cell: 202/202 seeds; the pooled return of the Phase A epochs (scored until 14 Oct, printed): early z -0.042, p 0.4834, reference z -0.937; 94 Phase A epochs below expectation, 76 at or above; Phase A early window == the captured rounds (wins 4252/4252, return exact: true); detection power of the scored statistic at 80 %: a 2.15 pp per-round RTP deficit spread over all 9682 slots; a deficit confined to the 988 slots whose multiplier at their depth is ≥ 10× would have to be 148.5 pp per round on those slots, more than the 99 pp a round can lose, so the scored statistic does not detect it; a separate test on those 988 slots alone would detect 47.5 pp (their own standardised z -0.776; printed, not scored); the Phase A pooled return's power 6.36 pp; false-alarm rate of the scored rule 0.00989 ± 0.000221 over the 9682 played slots (== this run's 9682: true), of the Phase A pooled rule 0.00789 ± 0.000198 (src/false-alarm-pass2.ts, npm run false-alarm:pass2; cap 0.01)"
+    },
+    {
+      "id": "MINES-22",
+      "status": "INFO",
+      "origin": null,
+      "detail": "Phase A first mine (field[0]) per grid — 25: chi² 31.0 (df 24) p 0.154; 36: chi² 25.7 (df 35) p 0.874; 49: chi² 51.6 (df 48) p 0.335; 64: chi² 59.9 (df 63) p 0.588; wins 4252 vs 4250.0 expected, z 0.053 p 0.9581 — informational (8500 rounds have little power and never bear the verdict)"
+    },
+    {
+      "id": "MINES-23",
+      "status": "PASS",
+      "origin": null,
+      "detail": "MANIFEST.md S5-MATRIX block: 8 rows; ids and names == the framework's eight, in order (S5-1 Replay protection, S5-2 Input validation, S5-3 Seed integrity under adversarial input, S5-4 Cross-player isolation, S5-5 Payout field integrity, S5-6 Nonce sequence enforcement, S5-7 Parameter boundary enforcement, S5-8 Game-specific state): true; each result Pass / Flag / Hard Fail / Not tested: true (6 Pass on every control the row names, 1 Pass on part of the controls it names, 1 Not tested); each tied to a check, capture or limitation: true; the vendored profile states the ids only (the shared PLINKO-23 text names the rows)"
+    },
+    {
+      "id": "MINES-24",
+      "status": "PASS",
+      "origin": null,
+      "detail": "site-verifier/derive.js (generated from src/rng.ts by scripts/build-site-verifier.mjs): sha256 e50f0c82ff03a1f56140d9a9b0dda0dcb1621b112126bf4c5f24792168e54adf; == SITE_VERIFIER_PIN in src/artifact-pins.ts: true; == its RELEASE-MANIFEST.json pin: true; quoted in MANIFEST.md and README.md: true; the module loaded from that file exports what src/rng.ts exports (drawStream, hmacBlock, picks, positionFromU, sha256Hex): true; run side by side with src/rng.ts on every round MINES-07 replays, from the 6 shipped datasets (9600 rounds of the 13 Oct phases and the 81 rounds of the 12 Oct file settled in their own record; its 2 records of the one round split in two, not replayed there, are not replayed here): 9681 rounds, 38926 calls (sha256Hex 202, hmacBlock 9681, drawStream 9681, positionFromU 9681, picks 9681; 5/5 exports exercised), 0 differing results"
+    },
+    {
+      "id": "MINES-25",
+      "status": "PASS",
+      "origin": null,
+      "detail": "README.md \"Verify a bet\" carries the save-the-hash-first step, where the seed is revealed, the fields, the commitment encoding, the HMAC key encoding (the seed's text, not hex-decoded), the draw with its block index, the tile numbering and a script that recomputes a round: 10/10 markers"
+    },
+    {
+      "id": "MINES-26",
+      "status": "PASS",
+      "origin": null,
+      "detail": "6 datasets + 8 evidence exhibits match their sha256 pinned in src/loader.ts; the figures checks compare against, read from the exhibits: MIN_STAKE 0.01000311 == E03 wallet.minBet, MAX_WIN 1000310.0961298 == E03 wallet.maxWin, multiplier coefficient 99/100 == E01 \"multiplier\" (99/100) and E02 rulesMinesFormula (0.99), GRIDS, SPEC_BOARDS and SPEC_PAYOUTS == E01, the published return parses from E01 \"return\" (GET /housegames/mines2/fairness) (0.99) and E02 rulesMinesFormulaWords (game page rules panel) (0.99) and E08 rulesMinesRTP (game page rules panel, live copy of 19 Oct) (0.99): true"
+    },
+    {
+      "id": "MINES-30",
+      "status": "PASS",
+      "origin": null,
+      "detail": "MANIFEST.md: 11 declared-limitation rows; load-bearing premises with \"Could the data contradict it?\": true; every exhibit E01…E08 listed by file name: true"
+    }
+  ],
+  "observations": [
+    "24 h rule (E02 rulesMinesIdle: \"A round left without a decision for 24 hours is finished by the server: with tiles open it is cashed out at its value; with none, the first tile is opened and, if safe, cashed out.\"): the round left open on purpose on 12 Oct (grid 25, 1 mine, 1 tile open, value 0.020625) was finished by the server at 2026-10-13T14:54:22.654857Z, 25 h 8 m 42 s after the last decision (2026-10-12T13:45:40.849Z); capture checks: 24.009 h active, 24.579 h active, 25.027 h active, 25.209 h closed; settled as a cash-out at exactly its value 0.020625: true; bet history row won, payout equal: true (E07). The witnessed branch (\"with tiles open it is cashed out at its value\") settled by the rule — its payout is SCORED in MINES-11 and its bet-history row in MINES-16, so a settlement that broke the rule moves the verdict; the branch \"with none, the first tile is opened and, if safe, cashed out\" was not exercised by the capture: declared unwitnessed (DL-7); the close came 1 h 8 m 42 s after the 24 hours, reported as observed (no bound is set on it). The MINES profile has no check for the 24 h rule itself, so its timing and the unwitnessed branch are an observation, not scored (ROAD-31 / HILO-32 score the same rule: PASS with the unwitnessed branch declared)",
+    "cash-out with no tile open (E02 rulesMinesCashout \"Cash out is not offered with no tile open\"), sent on purpose in the 12 Oct capture: refused 2/2 (HTTP 400, code 6 \"open a tile before cashing out\"); the rest of each of those rounds is recomputed in MINES-07/10/11",
+    "the 12 Oct round 089c2078… (split over 2 records, DL-9): 51 requests carried the bet's own generation id (the bet and 50 actions); 50/50 of those actions were answered with the bet answer itself (nothing opened, no second round); a second bet sent while that round was open was refused, HTTP 409 code 17 \"finish the round you are playing first\"; the round was then finished by one reveal and is counted in MINES-16"
+  ]
+}

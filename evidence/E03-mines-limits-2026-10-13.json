@@ -1,0 +1,25 @@
+{
+  "exhibit": "E03",
+  "what": "HouseBets mines limits (GET /housegames/limits/mines2)",
+  "source": {
+    "file": "data/housebets-mines-phaseA-auto1-8500rounds.json",
+    "sha256": "9dad19c845c17c2ccae3604f7be607cfecef4e918ffbe3ca9e8965c72de4c791",
+    "field": "meta.staticReads['/limits/mines2']"
+  },
+  "answer": {
+    "game": "mines2",
+    "maxBet": 20000,
+    "maxWin": 1000000,
+    "minBet": 0.01,
+    "source": "server-config",
+    "unit": "USD",
+    "wallet": {
+      "currency": 1,
+      "decimals": 8,
+      "maxBet": 20006.20192259,
+      "maxWin": 1000310.0961298,
+      "minBet": 0.01000311,
+      "symbol": "USDT"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "exhibit": "E06",
+  "what": "Phase D empty-seed control: the server's answer to POST /change_seed {clientSeed: \"\"}",
+  "source": {
+    "file": "data/supplementary/housebets-mines-phaseD-playerseeds-200rounds.json",
+    "sha256": "d71f53cfd882669a59c7585a39f8040c9afcf3d4970510886df96bbf7c33ad1a",
+    "field": "meta.emptySeedControl"
+  },
+  "record": {
+    "at": "2026-10-13T18:21:12.124Z",
+    "request": {
+      "method": "POST",
+      "path": "/change_seed",
+      "body": {
+        "gameType": "mines2",
+        "clientSeed": ""
+      }
+    },
+    "status": 400,
+    "accepted": false,
+    "response": {
+      "error": "an error occurred"
+    },
+    "pairBefore": {
+      "clientSeed": "pfmines0d9661a99cfdffb39d36fd8a4f237999",
+      "hashedServerSeed": "8f8d482064c18beda8e1050d13c2fd94ea1b062d4d7f92c0c1cd52cf2f8663ef",
+      "hashedNextServerSeed": "f54bc3983bf84b5eaf87e34535048bc2b23f2ed1cdba2b3006a931a11be6775d",
+      "lastSeed": "",
+      "nonce": 0,
+      "totalBets": 0,
+      "cursor": 0,
+      "id": 104710,
+      "_readAt": "2026-10-13T18:21:12.124Z"
+    },
+    "pairAfter": {
+      "clientSeed": "pfmines0d9661a99cfdffb39d36fd8a4f237999",
+      "hashedServerSeed": "8f8d482064c18beda8e1050d13c2fd94ea1b062d4d7f92c0c1cd52cf2f8663ef",
+      "hashedNextServerSeed": "f54bc3983bf84b5eaf87e34535048bc2b23f2ed1cdba2b3006a931a11be6775d",
+      "lastSeed": "",
+      "nonce": 0,
+      "totalBets": 0,
+      "cursor": 0,
+      "id": 104710,
+      "_readAt": "2026-10-13T18:21:13.064Z"
+    },
+    "clientSeedAfter": "pfmines0d9661a99cfdffb39d36fd8a4f237999",
+    "revealCommitOk": null
+  }
+}

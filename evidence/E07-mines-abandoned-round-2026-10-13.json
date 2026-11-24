@@ -1,0 +1,125 @@
+{
+  "exhibit": "E07",
+  "what": "The mines round left open on purpose on 12 Oct 2026 (one tile open), the checks that found it still active, and the server's own record of finishing it",
+  "source": {
+    "file": "data/supplementary/housebets-mines-full-83rounds-withopen.json",
+    "sha256": "318711cfd81fa261c1f229ac6441999e5e9b988fd0217fc4157dcc7012176126",
+    "fields": [
+      "meta.leftOpen",
+      "meta.openChecks",
+      "rounds[closedByServer]"
+    ]
+  },
+  "leftOpenAt": "2026-10-12T13:45:41.082Z",
+  "openChecks": [
+    {
+      "at": "2026-10-13T13:46:12.214Z",
+      "hoursSinceLeft": 24.009,
+      "stillActive": true
+    },
+    {
+      "at": "2026-10-13T14:20:26.003Z",
+      "hoursSinceLeft": 24.579,
+      "stillActive": true
+    },
+    {
+      "at": "2026-10-13T14:47:18.619Z",
+      "hoursSinceLeft": 25.027,
+      "stillActive": true
+    },
+    {
+      "at": "2026-10-13T14:58:12.897Z",
+      "hoursSinceLeft": 25.209,
+      "stillActive": false
+    }
+  ],
+  "roundAsLeft": [
+    {
+      "at": "2026-10-12T13:45:40.562Z",
+      "path": "/mines2/bet",
+      "body": {
+        "amount": 0.02,
+        "grid": 25,
+        "mines": 1,
+        "currency": 1
+      },
+      "game": {
+        "roundId": "c9ee209d-f51e-48df-8f0f-850b50749368",
+        "active": true,
+        "grid": 25,
+        "mines": 1,
+        "stake": 0.02,
+        "opened": [],
+        "multiplier": 0,
+        "value": 0,
+        "outcome": null,
+        "payout": 0,
+        "createdAt": "2026-10-12T13:45:40.745128827Z"
+      }
+    },
+    {
+      "at": "2026-10-12T13:45:40.849Z",
+      "path": "/mines2/action",
+      "body": {
+        "roundId": "c9ee209d-f51e-48df-8f0f-850b50749368",
+        "seq": 0,
+        "action": "reveal",
+        "tile": 13
+      },
+      "game": {
+        "roundId": "c9ee209d-f51e-48df-8f0f-850b50749368",
+        "active": true,
+        "grid": 25,
+        "mines": 1,
+        "stake": 0.02,
+        "opened": [
+          13
+        ],
+        "multiplier": 1.03125,
+        "value": 0.020625,
+        "outcome": null,
+        "payout": 0,
+        "createdAt": "2026-10-12T13:45:40.745128Z"
+      }
+    }
+  ],
+  "serverRecord": {
+    "roundId": "c9ee209d-f51e-48df-8f0f-850b50749368",
+    "active": false,
+    "grid": 25,
+    "mines": 1,
+    "stake": 0.02,
+    "opened": [
+      13
+    ],
+    "field": [
+      22
+    ],
+    "multiplier": 1.03125,
+    "value": 0.020625,
+    "outcome": "cashout",
+    "payout": 0.020625,
+    "fairness": {
+      "version": "canonical",
+      "hashedServerSeed": "5aec52aae32696248830f18ae3fd9b6ff4ffc504672474131053b367d3e75480",
+      "clientSeed": "pfminesbc3a0ce6044c307a706997117d5e3a80",
+      "nonce": 1
+    },
+    "createdAt": "2026-10-12T13:45:40.745128Z",
+    "settledAt": "2026-10-13T14:54:22.654857Z"
+  },
+  "betHistoryRow": {
+    "id": "c9ee209d-f51e-48df-8f0f-850b50749368",
+    "game": "housegames-mines",
+    "placed_at": "2026-10-12T13:45:40.726502Z",
+    "stake": "0.02000000",
+    "payout": "0.02062500",
+    "currency": "usdt",
+    "status": "won"
+  },
+  "betHistorySource": {
+    "file": "capture-full-2026-10-12/ledger/ledger-2026-10-13-final.json (HouseBets workshop)",
+    "sha256": "0be7ab44b9f3aedf5ed7d6db078f96b596a29e3621c7003b459614875c065864",
+    "readAt": "2026-10-13T20:06:53.464Z"
+  }
+}

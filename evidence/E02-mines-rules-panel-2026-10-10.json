@@ -1,0 +1,40 @@
+{
+  "exhibit": "E02",
+  "what": "HouseBets mines game page: the rules panel text (English), as shipped in the bundle the live page loads",
+  "source": {
+    "file": "bundles/platform-housegames-mines2-game.js (HouseBets workshop)",
+    "sha256": "e8e5d68ff2536c4e14ea2f7c554842559bcdb4cf67358b62ce59c0be9d4476e1",
+    "bytes": 872136,
+    "checkedOnLivePage": "2026-10-10 (bundles/LIVE-BUNDLES.md)"
+  },
+  "rulesPanelEnglish": {
+    "rulesLimitsH": "Limits",
+    "rulesBetRange": "Bet amount: {min} to {max}.",
+    "rulesMinesHowH": "How to play",
+    "rulesMinesChoose": "Choose a board size and the number of mines, then place your bet.",
+    "rulesMinesBoard": "{side}×{side} board ({tiles} tiles): {min} to {max} mines.",
+    "rulesMinesOpen": "Open tiles one at a time. A gem raises the multiplier; a mine ends the round and the stake is lost.",
+    "rulesMinesCashout": "Cash out any time after at least one gem. Cash out is not offered with no tile open.",
+    "rulesMinesPicks": "Autobet opens the tiles you picked on the board in order; if none is a mine the round is cashed out at once.",
+    "rulesMinesFreeRound": "A bet of 0 plays a free round — nothing is staked, nothing is paid; the board still deals and reveals.",
+    "rulesMinesIdle": "A round left without a decision for 24 hours is finished by the server: with tiles open it is cashed out at its value; with none, the first tile is opened and, if safe, cashed out.",
+    "rulesMinesPayH": "Multiplier and payout",
+    "rulesMinesFormula": "After k gems on a board of N tiles with m mines, the multiplier is 0.99 × C(N, k) / C(N−m, k).",
+    "rulesMinesFormulaWords": "That is {pct}% of the fair odds for opening k safe tiles in a row — the house keeps 1%.",
+    "rulesMinesPayout": "The payout is the stake times the multiplier, rounded down to the smallest unit of your currency.",
+    "rulesMinesRTP": "The return is exactly {pct}% at every cash-out point, for every board and every mine count.",
+    "rulesMinesMaxWinBehaviour": "If the next tile would take the payout above the round's max win, the tile is not opened and the round is cashed out at its current value.",
+    "rulesMinesAllRevealed": "When the round ends every mine is revealed.",
+    "rulesMinesExampleH": "Example",
+    "rulesMinesExampleIntro": "On a {side}×{side} board ({tiles} tiles) with {mines} mines, a bet of {stake}:",
+    "rulesMinesExampleRowOne": "After 1 gem",
+    "rulesMinesExampleRow": "After {k} gems",
+    "rulesMinesExampleMult": "×{x}",
+    "rulesMinesExamplePay": "pays {amount}",
+    "rulesMinesExampleNote": "Numbers from the game's own code — the same math settles every round.",
+    "rulesMinesMaxWinCap": "A round can win at most {cap}. The round auto-cashes at the last tile that still fits.",
+    "rulesMinesAutobet": "Autobet plays rounds on the tiles you picked, at the stake and count you set, and stops on a profit or a loss limit you name.",
+    "rulesMinesFair": "The mines come from an HMAC-SHA256 of a server seed, your client seed and the round's nonce, placed before any tile is opened. The server commits to its seed by showing you the hash first; when you change the pair, the seed is revealed and every round can be replayed.",
+    "rulesMinesAutobetH": "Autobet"
+  }
+}
